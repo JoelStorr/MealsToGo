@@ -1,4 +1,4 @@
-import { StatusBar as ExposStatusBar } from "expo-status-bar";
+import React from "react";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 
 import {

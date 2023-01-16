@@ -1,6 +1,6 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
-
+import styled from "styled-components/native";
 import { StyleSheet, Text, View, StatusBar, Platform } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import { SafeAreaProvider } from "react-native-safe-area-view";
@@ -9,6 +9,21 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 
 const isAndroid = Platform.OS === "android";
 
+const SafeArea = styled(SafeAreaView)`
+  flex: 1;
+  margin-top: ${StatusBar.currentHeight}px;
+`;
+
+const SearchContainer = styled.View`
+  padding: 16px;
+`;
+
+const RestauranListContainer = styled.View`
+  flex: 1;
+  padding: 16px;
+  background-color: blue;
+`;
+
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
@@ -16,36 +31,18 @@ export const RestaurantsScreen = () => {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.search}>
+      <SafeArea>
+        <SearchContainer>
           <Searchbar
             placeholder="Search"
             onChangeText={onChangeSearch}
             value={searchQuery}
           />
-        </View>
-        <View style={styles.list}>
+        </SearchContainer>
+        <RestauranListContainer>
           <RestaurantInfoCard />
-        </View>
-      </SafeAreaView>
+        </RestauranListContainer>
+      </SafeArea>
     </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: isAndroid ? StatusBar.currentHeight : 0,
-  },
-  text: {
-    color: "white",
-  },
-  search: {
-    padding: 16,
-  },
-  list: {
-    flexGrow: 1,
-    backgroundColor: "blue",
-    padding: 16,
-  },
-});

@@ -11,7 +11,7 @@ const isAndroid = Platform.OS === "android";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  margin-top: ${StatusBar.currentHeight}px;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px;`}
 `;
 
 const SearchContainer = styled.View`

@@ -1,7 +1,7 @@
 import React from "react";
 
 import styled from "styled-components/native";
-import { Card } from "react-native-paper";
+import { Card, Text } from "react-native-paper";
 
 import { SvgXml } from "react-native-svg";
 
@@ -44,6 +44,7 @@ const Rating = styled.View`
 
 const StarBox = styled.View`
   flex-direction: row;
+  flex-grow: 2;
 `;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -56,11 +57,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "100 some random Street",
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily = false,
+    isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-  console.log(ratingArray);
 
   return (
     <RestaurantCard elevation={5}>
@@ -78,8 +78,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               return <SvgXml xml={star} width={20} height={20} />;
             })}
           </StarBox>
-
-          <SvgXml xml={open} width={20} height={20} />
+          {isClosedTemporarily && (
+            <Text variant="label" style={{ color: "red" }}>
+              {" "}
+              CLOSED TEMPORARLY{" "}
+            </Text>
+          )}
+          {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
         </Rating>
         <Address>{address}</Address>
       </Info>

@@ -2,6 +2,12 @@ import React from "react";
 
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
+
+import { SvgXml } from "react-native-svg";
+
+import star from "../../../../assets/star.js";
+import open from "../../../../assets/open.js";
+
 //NOTE: Card
 const RestaurantCard = styled(Card)`
   background-color: white;
@@ -29,6 +35,17 @@ const Info = styled.View`
   padding: ${(props) => props.theme.sizes[1]};
 `;
 
+const Rating = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: ${(props) => props.theme.space[2]};
+  padding-bottom: ${(props) => props.theme.space[2]};
+`;
+
+const StarBox = styled.View`
+  flex-direction: row;
+`;
+
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Name",
@@ -42,6 +59,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     isClosedTemporarily = false,
   } = restaurant;
 
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
+  console.log(ratingArray);
+
   return (
     <RestaurantCard elevation={5}>
       <RestaurantCardCover
@@ -52,6 +72,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       />
       <Info>
         <Title>{name}</Title>
+        <Rating>
+          <StarBox>
+            {ratingArray.map(() => {
+              return <SvgXml xml={star} width={20} height={20} />;
+            })}
+          </StarBox>
+
+          <SvgXml xml={open} width={20} height={20} />
+        </Rating>
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>

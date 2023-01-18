@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 const defaultTextStyles = (theme) => `
     font-family: ${theme.fonts.body};
-    font-weight: ${theme.fontWeight.regular};
+    font-weight: ${theme.fontWeights.regular};
     color: ${theme.colors.text.primary};
     flex-wrap: warp;
     margin-top: 0px;
@@ -12,17 +12,22 @@ const defaultTextStyles = (theme) => `
 const body = (theme) => `
     font-size: ${theme.fontSizes.body};
 `;
-const label = (theme) => `
-    font-size: ${theme.fontSizes.label};
-`;
-const caption = (theme) => `
-    font-size: ${theme.fontSizes.caption};
-`;
-const error = (theme) => `
-    font-size: ${theme.fontSizes.error};
-`;
 const hint = (theme) => `
     font-size: ${theme.fontSizes.hint};
+`;
+
+const error = (theme) => `
+color:${theme.colors.text.error};
+`;
+
+const caption = (theme) => `
+    font-size: ${theme.fontSizes.caption};
+    font-weight: ${theme.fontWeights.bold};
+`;
+const label = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.body};
+    font-weight: ${theme.fontWeights.medium};
 `;
 
 const variants = {

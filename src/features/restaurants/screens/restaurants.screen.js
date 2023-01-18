@@ -18,6 +18,12 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.sizes[1]};
 `;
 
+const RestaurantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
+
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
@@ -34,11 +40,20 @@ export const RestaurantsScreen = () => {
           />
         </SearchContainer>
 
-        <FlatList
-          data={[{ name: 1 }, { name: 2 }]}
+        <RestaurantList
+          data={[
+            { name: 1 },
+            { name: 2 },
+            { name: 3 },
+            { name: 4 },
+            { name: 5 },
+            { name: 6 },
+            { name: 7 },
+            { name: 8 },
+          ]}
           renderItem={() => <RestaurantInfoCard />}
           keyExtractor={(item) => item.name}
-          contentContainerStyle={{ padding: 16 }}
+          contentContainerStyle={{ padding: 16, marginTop: 16 }}
         />
       </SafeArea>
     </SafeAreaProvider>

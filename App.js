@@ -1,6 +1,11 @@
 import React from "react";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import { ThemeProvider } from "styled-components/native";
+import { Text } from "react-native-paper";
+
+//NOTE: Tab Navigation Imports
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import {
   useFonts as useOswald,
@@ -15,6 +20,8 @@ import {
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { theme } from "./src/infostructure/theme";
 
+import { SafeArea } from "./src/components/utility/safe-area.component";
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -28,11 +35,39 @@ export default function App() {
     return null;
   }
 
+  function RestaurantScreen() {
+    return <RestaurantsScreen />;
+  }
+
+  function MapsScreen() {
+    return (
+      <SafeArea>
+        <Text>Map Screen</Text>
+      </SafeArea>
+    );
+  }
+
+  function SettingsScreen() {
+    return (
+      <SafeArea>
+        <Text>Settings Screen</Text>
+      </SafeArea>
+    );
+  }
+
+  const Tab = createBottomTabNavigator();
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <ExpoStatusBar hidden={false} barStyle="dark-content" />
-        <RestaurantsScreen />
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name="Restaurant" component={RestaurantScreen} />
+            <Tab.Screen name="Map" component={MapsScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
       </ThemeProvider>
     </>
   );

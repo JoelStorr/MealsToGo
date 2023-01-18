@@ -33,6 +33,11 @@ const Rating = styled.View`
   padding-bottom: ${(props) => props.theme.space[2]};
 `;
 
+const Icon = styled.Image`
+  width: 15px;
+  height: 15px;
+`;
+
 const Section = styled.View`
   flex-direction: row;
   align-items: center;
@@ -79,7 +84,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
             <Spacer position="left" size="large">
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>

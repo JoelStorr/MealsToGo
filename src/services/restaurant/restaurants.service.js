@@ -12,14 +12,22 @@ export const restaurantRequest = (location = "37.7749295,-122.4194155") => {
   });
 };
 
-const restaurantsTransform = (result) => {
-  return camelize(result);
+const restaurantsTransform = ({ results = [] }) => {
+  const mappedResults = results.map((restaurant) => {
+    return {
+      ...restaurant,
+      isOpenNow: restaurant.opening_hours && restaurant.opening_hours.isOpenNow,
+      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+    };
+  });
+
+  return camelize(mappedResults);
 };
 
 restaurantRequest()
   .then(restaurantsTransform)
   .then((transformedResponse) => {
-    console.log(transformedResponse);
+    //console.log(transformedResponse);
   })
   .catch((error) => {
     console.log(error);

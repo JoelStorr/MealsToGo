@@ -23,6 +23,9 @@ import { theme } from "./src/infostructure/theme";
 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 
+//NOTE: API and Mock requests
+import { restaurantRequest } from "./src/services/restaurant/restaurants.service";
+
 //NOTE: Navigation
 function RestaurantScreen() {
   return <RestaurantsScreen />;

@@ -20,8 +20,10 @@ import {
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { theme } from "./src/infostructure/theme";
-
 import { SafeArea } from "./src/components/utility/safe-area.component";
+
+//NOTE: React Context
+import { RestaurantsContextProvider } from "./src/services/restaurant/restaurants.context";
 
 //NOTE: Navigation
 function RestaurantScreen() {
@@ -46,7 +48,8 @@ function SettingsScreen() {
 
 const Tab = createBottomTabNavigator();
 
-function renderIcons({ route }) {
+//Allows for more Complex Navigation
+/* function renderIcons({ route }) {
   return {
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
@@ -65,7 +68,7 @@ function renderIcons({ route }) {
     tabBarActiveTintColor: "tomato",
     tabBarInactiveTintColor: "gray",
   };
-}
+} */
 
 const routeName = {
   Restaurant: "md-restaurant",
@@ -101,13 +104,15 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <ExpoStatusBar hidden={false} barStyle="dark-content" />
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={NavIcons}>
-            <Tab.Screen name="Restaurant" component={RestaurantScreen} />
-            <Tab.Screen name="Map" component={MapsScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={NavIcons}>
+              <Tab.Screen name="Restaurant" component={RestaurantScreen} />
+              <Tab.Screen name="Map" component={MapsScreen} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
     </>
   );

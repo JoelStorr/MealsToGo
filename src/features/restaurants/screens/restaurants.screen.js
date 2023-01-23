@@ -58,7 +58,6 @@ export const RestaurantsScreen = () => {
           <RestaurantList
             data={restaurants}
             renderItem={({ item }) => {
-              console.log(item);
               return <RestaurantInfoCard restaurant={item} />;
             }}
             keyExtractor={(item) => item.name}

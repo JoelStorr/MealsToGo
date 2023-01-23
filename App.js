@@ -24,6 +24,7 @@ import { SafeArea } from "./src/components/utility/safe-area.component";
 
 //NOTE: React Context
 import { RestaurantsContextProvider } from "./src/services/restaurant/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 //NOTE: Navigation
 function RestaurantScreen() {
@@ -104,15 +105,17 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <ExpoStatusBar hidden={false} barStyle="dark-content" />
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={NavIcons}>
-              <Tab.Screen name="Restaurant" component={RestaurantScreen} />
-              <Tab.Screen name="Map" component={MapsScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator screenOptions={NavIcons}>
+                <Tab.Screen name="Restaurant" component={RestaurantScreen} />
+                <Tab.Screen name="Map" component={MapsScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
     </>
   );

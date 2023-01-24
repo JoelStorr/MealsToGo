@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
-import { FlatList, Platform } from "react-native";
+import { FlatList } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 
 //NOTE: Components
@@ -12,8 +12,6 @@ import { Search } from "../components/search.component";
 
 //NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
-
-const isAndroid = Platform.OS === "android";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -33,10 +31,9 @@ const LoadingList = styled(ActivityIndicator).attrs({
 
 export const RestaurantsScreen = () => {
   //Opens the Context foer the Component
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
 
   const [searchQuery, setSearchQuery] = React.useState("");
-
   const onChangeSearch = (query) => setSearchQuery(query);
 
   return (

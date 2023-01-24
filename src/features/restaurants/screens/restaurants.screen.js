@@ -1,21 +1,19 @@
+//NOTE: NPM Packages
 import React, { useContext } from "react";
-import { Searchbar, ActivityIndicator, MD2Colors } from "react-native-paper";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { FlatList, Platform } from "react-native";
-
 import { SafeAreaProvider } from "react-native-safe-area-view";
 
+//NOTE: Components
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
-
 import { SafeArea } from "../../../components/utility/safe-area.component";
+import { Search } from "../components/search.component";
 
+//NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
 
 const isAndroid = Platform.OS === "android";
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.sizes[1]};
-`;
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -44,14 +42,7 @@ export const RestaurantsScreen = () => {
   return (
     <SafeAreaProvider>
       <SafeArea>
-        <SearchContainer>
-          <Searchbar
-            placeholder="Search"
-            onChangeText={onChangeSearch}
-            value={searchQuery}
-          />
-        </SearchContainer>
-
+        <Search />
         {isLoading ? (
           <LoadingList />
         ) : (

@@ -71,7 +71,7 @@ const NavIcons = ({ route }) => ({
   };
 } */
 
-export const Navigation = () => {
+export const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={NavIcons}>

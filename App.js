@@ -20,7 +20,7 @@ import { LocationContextProvider } from "./src/services/location/location.contex
 
 //NOTE: Navigation
 
-import { Navigation } from "./src/infrastructure/navigation/app.navigator";
+import { Navigation } from "./src/infrastructure/navigation";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({

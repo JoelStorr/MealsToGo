@@ -19,7 +19,7 @@ import {
 } from "@expo-google-fonts/lato";
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
-import { theme } from "./src/infostructure/theme";
+import { theme } from "./src/infrastructure/theme";
 import { SafeArea } from "./src/components/utility/safe-area.component";
 
 //NOTE: React Context

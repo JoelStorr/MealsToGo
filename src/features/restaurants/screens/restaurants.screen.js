@@ -29,8 +29,8 @@ const LoadingList = styled(ActivityIndicator).attrs({
   left: 50%;
 `;
 
-export const RestaurantsScreen = () => {
-  //Opens the Context foer the Component
+export const RestaurantsScreen = ({ navigation }) => {
+  //Opens the Context for the Component
   const { restaurants, isLoading } = useContext(RestaurantsContext);
 
   const [searchQuery, setSearchQuery] = React.useState("");

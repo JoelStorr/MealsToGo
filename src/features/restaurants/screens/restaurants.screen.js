@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 
 //NOTE: Components
@@ -33,9 +33,6 @@ export const RestaurantsScreen = ({ navigation }) => {
   //Opens the Context for the Component
   const { restaurants, isLoading } = useContext(RestaurantsContext);
 
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const onChangeSearch = (query) => setSearchQuery(query);
-
   return (
     <SafeAreaProvider>
       <SafeArea>
@@ -46,7 +43,13 @@ export const RestaurantsScreen = ({ navigation }) => {
           <RestaurantList
             data={restaurants}
             renderItem={({ item }) => {
-              return <RestaurantInfoCard restaurant={item} />;
+              return (
+                <Pressable
+                  onPress={() => navigation.navigate("RestaurantDetail")}
+                >
+                  <RestaurantInfoCard restaurant={item} />
+                </Pressable>
+              );
             }}
             keyExtractor={(item) => item.name}
             contentContainerStyle={{ padding: 16, marginTop: 16 }}

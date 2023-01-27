@@ -22,13 +22,14 @@ function SettingsScreen() {
 const Tab = createBottomTabNavigator();
 
 const routeName = {
-  Restaurant: "md-restaurant",
+  Restaurants: "md-restaurant",
   Map: "md-map",
   Settings: "md-settings",
 };
 
 const NavIcons = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
+
     let iconName = routeName[route.name];
 
     // You can return any component that you like here!
@@ -65,11 +66,19 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Tab.Navigator screenOptions={NavIcons}>
         <Tab.Screen
-          name="Restaurant"
+          name="Restaurants"
           component={RestaurantsNavigator}
-          headerShown={false}
+          options={{
+            headerShown: false,
+          }}
         />
-        <Tab.Screen name="Map" component={MapScreen} />
+        <Tab.Screen
+          name="Map"
+          component={MapScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>

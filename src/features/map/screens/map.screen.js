@@ -5,6 +5,8 @@ import MapView from "react-native-maps";
 
 export const MapScreen = ()=> {
   return(
-    <MapView></MapView>
+    <MapView
+      style={{height: '100%', width: '100%'}}
+    ></MapView>
   )
 };

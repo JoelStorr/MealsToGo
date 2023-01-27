@@ -29,7 +29,6 @@ const routeName = {
 
 const NavIcons = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
-
     let iconName = routeName[route.name];
 
     // You can return any component that you like here!

@@ -8,8 +8,10 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-export const MapScreen = ()=> {
-  return(
-    <Map></Map>
-  )
+export const MapScreen = () => {
+  return (
+    <>
+      <Map />
+    </>
+  );
 };

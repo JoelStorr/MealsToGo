@@ -17,6 +17,7 @@ import { theme } from "./src/infrastructure/theme";
 //NOTE: React Context
 import { RestaurantsContextProvider } from "./src/services/restaurant/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavouritesContextProvider } from "./src/services/favorites/favorites.context";
 
 //NOTE: Navigation
 
@@ -39,11 +40,13 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <ExpoStatusBar hidden={false} barStyle="dark-content" />
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
     </>
   );

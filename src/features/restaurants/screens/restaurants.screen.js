@@ -13,7 +13,7 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Search } from "../components/search.component";
 //NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
-import { FavouritesContext } from "../../../services/favorites/favorites.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {

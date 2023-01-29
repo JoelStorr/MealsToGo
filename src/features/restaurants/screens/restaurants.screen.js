@@ -10,6 +10,7 @@ import { SafeAreaProvider } from "react-native-safe-area-view";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Search } from "../components/search.component";
+import { FavouritesBar } from "../../../components/favourite/favourites-bar.component";
 //NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
@@ -37,36 +38,34 @@ export const RestaurantsScreen = ({ navigation }) => {
 
   const [isToggled, setIsToggled] = useState(false);
 
-
   return (
     <SafeAreaProvider>
       <SafeArea>
+        {isLoading && <LoadingList />}
         <Search
           isFavouritesToggled={isToggled}
           onFavouritesToggle={() => setIsToggled(!isToggled)}
         />
-        {isLoading ? (
-          <LoadingList />
-        ) : (
-          <RestaurantList
-            data={restaurants}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate("RestaurantDetail", {
-                      restaurant: item,
-                    })
-                  }
-                >
-                  <RestaurantInfoCard restaurant={item} />
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={(item) => item.name}
-            contentContainerStyle={{ padding: 16, marginTop: 16 }}
-          />
-        )}
+
+        {isToggled && <FavouritesBar favourites={favourites} onNavigate={navigation.navigate}/>}
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", {
+                    restaurant: item,
+                  })
+                }
+              >
+                <RestaurantInfoCard restaurant={item} />
+              </TouchableOpacity>
+            );
+          }}
+          keyExtractor={(item) => item.name}
+          contentContainerStyle={{ padding: 16, marginTop: 16 }}
+        />
       </SafeArea>
     </SafeAreaProvider>
   );

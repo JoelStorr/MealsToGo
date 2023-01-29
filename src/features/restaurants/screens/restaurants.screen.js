@@ -1,15 +1,14 @@
 //NOTE: NPM Packages
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
-import { FlatList, Pressable } from "react-native";
+import { FlatList } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { SafeAreaProvider } from "react-native-safe-area-view";
 //NOTE: Components
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-
 import { Search } from "../components/search.component";
 //NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
@@ -35,11 +34,17 @@ export const RestaurantsScreen = ({ navigation }) => {
   //Opens the Context for the Component
   const { restaurants, isLoading } = useContext(RestaurantsContext);
   const { favourites } = useContext(FavouritesContext);
-  console.log(favourites);
+
+  const [isToggled, setIsToggled] = useState(false);
+
+
   return (
     <SafeAreaProvider>
       <SafeArea>
-        <Search />
+        <Search
+          isFavouritesToggled={isToggled}
+          onFavouritesToggle={() => setIsToggled(!isToggled)}
+        />
         {isLoading ? (
           <LoadingList />
         ) : (

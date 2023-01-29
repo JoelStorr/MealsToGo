@@ -13,6 +13,7 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Search } from "../components/search.component";
 //NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
+import { FavouritesContext } from "../../../services/favorites/favorites.context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -33,7 +34,8 @@ const LoadingList = styled(ActivityIndicator).attrs({
 export const RestaurantsScreen = ({ navigation }) => {
   //Opens the Context for the Component
   const { restaurants, isLoading } = useContext(RestaurantsContext);
-
+  const { favourites } = useContext(FavouritesContext);
+  console.log(favourites);
   return (
     <SafeAreaProvider>
       <SafeArea>
@@ -44,7 +46,6 @@ export const RestaurantsScreen = ({ navigation }) => {
           <RestaurantList
             data={restaurants}
             renderItem={({ item }) => {
-
               return (
                 <TouchableOpacity
                   onPress={() =>

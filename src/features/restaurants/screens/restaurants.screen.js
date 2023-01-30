@@ -70,3 +70,5 @@ export const RestaurantsScreen = ({ navigation }) => {
     </SafeAreaProvider>
   );
 };
+
+//TODO: Fix Card Error with safe area when coming back from Restaurant detail Screen.

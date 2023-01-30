@@ -23,7 +23,6 @@ export const FavouritesBar = ({ favourites, onNavigate }) => {
                   })
                 }
               >
-                }
                 <CompactRestaurantInfo restaurant={restaurant} />
               </TouchableOpacity>
             </Spacer>

@@ -5,11 +5,20 @@ import { CompactRestaurantInfo } from "../restaurant/compact-restaurant-info.com
 import { Spacer } from "../spacer/spacer.component";
 import { Text } from "../typography/text.component";
 
+//Import for local Storage
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const FavoritesWrapper = styled.View`
   padding: 10px;
 `;
 
 export const FavouritesBar = ({ favourites, onNavigate }) => {
+
+  if (favourites.length === 0) {
+    return null;
+  }
+
+
   return (
     <FavoritesWrapper>
       <Spacer variant="left.large">

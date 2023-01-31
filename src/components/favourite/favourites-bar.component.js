@@ -13,12 +13,9 @@ const FavoritesWrapper = styled.View`
 `;
 
 export const FavouritesBar = ({ favourites, onNavigate }) => {
-
   if (favourites.length === 0) {
     return null;
   }
-
-
   return (
     <FavoritesWrapper>
       <Spacer variant="left.large">

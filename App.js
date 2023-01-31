@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import { ThemeProvider } from "styled-components/native";
 
@@ -22,8 +22,6 @@ import { FavouritesContextProvider } from "./src/services/favourites/favourites.
 //NOTE: Navigation
 import { Navigation } from "./src/infrastructure/navigation";
 import { AuthContextProvider } from "./src/services/auth/auth.context";
-
-
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,

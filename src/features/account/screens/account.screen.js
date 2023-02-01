@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import {
   AccountBackground,
@@ -8,16 +7,15 @@ import {
   AuthButton,
 } from "../components/account.styles";
 
-export const AccountScreen = () => {
+export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
-      <Text>Hello World 2</Text>
       <AccountContainer>
         <AuthButton
           icon="lock-open-outline"
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate("Login")}
         >
           LOGIN
         </AuthButton>
@@ -25,7 +23,7 @@ export const AccountScreen = () => {
           <AuthButton
             icon="mail"
             mode="contained"
-            onPress={() => console.log("Pressed")}
+            onPress={() => navigation.navigate("Register")}
           >
             REGISTER
           </AuthButton>

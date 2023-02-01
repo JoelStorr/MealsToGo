@@ -62,24 +62,22 @@ const NavIcons = ({ route }) => ({
 
 export const AppNavigator = () => {
   return (
-
-      <Tab.Navigator screenOptions={NavIcons}>
-        <Tab.Screen
-          name="Restaurants"
-          component={RestaurantsNavigator}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Tab.Screen
-          name="Map"
-          component={MapScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-
+    <Tab.Navigator screenOptions={NavIcons}>
+      <Tab.Screen
+        name="Restaurants"
+        component={RestaurantsNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 };

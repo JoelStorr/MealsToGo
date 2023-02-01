@@ -1,39 +1,23 @@
 import React from "react";
-import { Text, View } from "react-native";
 
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import { AccountScreen } from "../../features/account/screens/account.screen";
+import { RegisterScreen } from "../../features/account/screens/register.screen";
+import { LoginScreen } from "../../features/account/screens/login.screen";
 
 const Stack = createStackNavigator();
-
-function MainScreen() {
-  return (
-    <View>
-      <Text>Account Screen</Text>
-    </View>
-  );
-}
-
-function LoginScreen() {
-  return (
-    <View>
-      <Text>Login Screen</Text>
-    </View>
-  );
-}
 
 export const AccountNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        ...TransitionPresets.ModalPresentationIOS,
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Main" commponent={MainScreen} />
-      <Stack.Screen name="Login" commponent={LoginScreen} />
+      <Stack.Screen name="Main" component={AccountScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 };

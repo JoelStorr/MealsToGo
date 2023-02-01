@@ -62,7 +62,7 @@ const NavIcons = ({ route }) => ({
 
 export const AppNavigator = () => {
   return (
-    <NavigationContainer>
+
       <Tab.Navigator screenOptions={NavIcons}>
         <Tab.Screen
           name="Restaurants"
@@ -80,6 +80,6 @@ export const AppNavigator = () => {
         />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
+
   );
 };

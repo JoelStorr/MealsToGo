@@ -7,7 +7,7 @@ import {
   AuthButton,
   AuthTextInput,
   Title,
-  ErrorContainer
+  ErrorContainer,
 } from "../components/account.styles";
 import { AuthContext } from "../../../services/auth/auth.context";
 import { Text } from "../../../components/typography/text.component";

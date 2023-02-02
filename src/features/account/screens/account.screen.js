@@ -5,8 +5,9 @@ import {
   AccountCover,
   AccountContainer,
   AuthButton,
-  Title
+  Title,
 } from "../components/account.styles";
+
 
 export const AccountScreen = ({ navigation }) => {
   return (

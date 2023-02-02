@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import {
   AccountBackground,
@@ -16,7 +17,7 @@ export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { onLogin, error } = useContext(AuthContext);
+  const { onLogin, error, isLoading } = useContext(AuthContext);
 
   return (
     <AccountBackground>
@@ -31,27 +32,33 @@ export const LoginScreen = ({ navigation }) => {
           autoCapitalize="none"
           onChangeText={(text) => setEmail(text)}
         />
-        <AuthTextInput
-          label="Password"
-          value={password}
-          textContentType="password"
-          secureTextEntry
-          autoCapitalize="none"
-          onChangeText={(text) => setPassword(text)}
-        />
+        <Spacer size="large">
+          <AuthTextInput
+            label="Password"
+            value={password}
+            textContentType="password"
+            secureTextEntry
+            autoCapitalize="none"
+            onChangeText={(text) => setPassword(text)}
+          />
+        </Spacer>
         {error && (
           <ErrorContainer>
             <Text variant="error">{error}</Text>
           </ErrorContainer>
         )}
         <Spacer size="large">
-          <AuthButton
-            icon="lock-open-outline"
-            mode="contained"
-            onPress={() => onLogin(email, password)}
-          >
-            LOGIN
-          </AuthButton>
+          {!isLoading ? (
+            <AuthButton
+              icon="lock-open-outline"
+              mode="contained"
+              onPress={() => onLogin(email, password)}
+            >
+              LOGIN
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animation={true} color={MD2Colors.blue300} />
+          )}
         </Spacer>
       </AccountContainer>
       <Spacer size="large">

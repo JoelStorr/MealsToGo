@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
 import { Text, Button } from "react-native-paper";
 
+//NOTE: Context Mount
+import { RestaurantsContextProvider } from "../../services/restaurant/restaurants.context";
+import { LocationContextProvider } from "../..//services/location/location.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
+
 //NOTE: Tab Navigation Imports
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -68,22 +73,28 @@ const NavIcons = ({ route }) => ({
 
 export const AppNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={NavIcons}>
-      <Tab.Screen
-        name="Restaurants"
-        component={RestaurantsNavigator}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Map"
-        component={MapScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
+    <FavouritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <Tab.Navigator screenOptions={NavIcons}>
+            <Tab.Screen
+              name="Restaurants"
+              component={RestaurantsNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Tab.Screen
+              name="Map"
+              component={MapScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
+    </FavouritesContextProvider>
   );
 };

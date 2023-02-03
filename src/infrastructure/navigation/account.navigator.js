@@ -21,3 +21,5 @@ export const AccountNavigator = () => {
     </Stack.Navigator>
   );
 };
+
+//TODO: Figure out why Android App Crashes when this screen is loaded.

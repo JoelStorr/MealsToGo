@@ -12,8 +12,12 @@ export const FavouritesContextProvider = ({ children }) => {
 
   //Building aut Local Data
   //Write Data
+  //TODO: Fix Bug that favourites are not stored in local storage Correctly
+  //TODO: See why Local Storage is overwritten on user change
   const saveFavorites = async (value, uid) => {
     try {
+      console.log("Saving Favorites");
+      console.log(value);
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
     } catch (e) {
@@ -22,9 +26,11 @@ export const FavouritesContextProvider = ({ children }) => {
   };
 
   //Reading Data
-  const loadFavourites = async () => {
+  const loadFavourites = async (uid) => {
     try {
-      const value = await AsyncStorage.getItem("@favourites");
+      const value = await AsyncStorage.getItem(`@favourites-${uid}`);
+      console.log("Get Value");
+      console.log(value);
       if (value !== null) {
         setFavourites(JSON.parse(value));
       }

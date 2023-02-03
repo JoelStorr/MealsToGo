@@ -1,17 +1,29 @@
 import React, { useContext } from "react";
-import { Text, Button } from "react-native-paper";
+
+import { List } from "react-native-paper";
 
 import { AuthContext } from "../../../services/auth/auth.context";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
-export const SettingsScreen = () => {
+export const SettingsScreen = ({ navigation }) => {
   const { onLogout } = useContext(AuthContext);
   return (
     <SafeArea>
-      <Text>Settings Screen</Text>
-      <Button title="Log out" onPress={() => onLogout()}>
-        Log out
-      </Button>
+      <List.Section>
+        <List.Item
+          style={{ padding: 16 }}
+          title="Favourites"
+          description="View your favourites"
+          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+          onPress={() => navigation.navigate("Favourites")}
+        />
+        <List.Item
+          sytle={{ padding: 16 }}
+          title="Logout"
+          left={(props) => <List.Icon {...props} color="black" icon="door" />}
+          onPress={onLogout}
+        />
+      </List.Section>
     </SafeArea>
   );
 };

@@ -6,7 +6,6 @@ import { AuthContext } from "../../../services/auth/auth.context";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import styled from "styled-components/native";
 
-
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 

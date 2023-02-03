@@ -1,5 +1,5 @@
-import React from "react";
-import { Text } from "react-native-paper";
+import React, { useContext } from "react";
+import { Text, Button } from "react-native-paper";
 
 //NOTE: Tab Navigation Imports
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,11 +10,17 @@ import { SafeArea } from "../../components/utility/safe-area.component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/map/screens/map.screen";
 
+import { AuthContext } from "../../services/auth/auth.context";
+
 //NOTE: Navigation
 function SettingsScreen() {
+  const { onLogout } = useContext(AuthContext);
   return (
     <SafeArea>
       <Text>Settings Screen</Text>
+      <Button title="Log out" onPress={() => onLogout()}>
+        Log out
+      </Button>
     </SafeArea>
   );
 }

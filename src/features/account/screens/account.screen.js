@@ -8,7 +8,6 @@ import {
   Title,
 } from "../components/account.styles";
 
-
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>

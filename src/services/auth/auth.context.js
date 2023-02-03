@@ -1,5 +1,7 @@
-import React, { useState, createContext } from "react";
-import { loginRequests, registerRequest } from "./auth.service";
+import React, { useState, createContext, useEffect } from "react";
+import { loginRequests, registerRequest, auth } from "./auth.service";
+
+import { onAuthStateChanged } from "firebase/auth";
 
 export const AuthContext = createContext();
 
@@ -36,6 +38,14 @@ export const AuthContextProvider = ({ children }) => {
       });
   };
 
+  onAuthStateChanged(auth, (u) => {
+    if (u) {
+      setUser(u);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  });
   return (
     <AuthContext.Provider
       value={{

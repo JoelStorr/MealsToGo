@@ -1,34 +1,20 @@
-import React, { useContext } from "react";
-import { Text, Button } from "react-native-paper";
+import React from "react";
 
 //NOTE: Context Mount
 import { RestaurantsContextProvider } from "../../services/restaurant/restaurants.context";
-import { LocationContextProvider } from "../..//services/location/location.context";
+import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 
 //NOTE: Tab Navigation Imports
-import { NavigationContainer } from "@react-navigation/native";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import { SafeArea } from "../../components/utility/safe-area.component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/map/screens/map.screen";
-
-import { AuthContext } from "../../services/auth/auth.context";
+import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 
 //NOTE: Navigation
-function SettingsScreen() {
-  const { onLogout } = useContext(AuthContext);
-  return (
-    <SafeArea>
-      <Text>Settings Screen</Text>
-      <Button title="Log out" onPress={() => onLogout()}>
-        Log out
-      </Button>
-    </SafeArea>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 

@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
-import { FlatList } from "react-native";
+
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { SafeAreaProvider } from "react-native-safe-area-view";
@@ -14,12 +14,7 @@ import { FavouritesBar } from "../../../components/favourite/favourites-bar.comp
 //NOTE: Services
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import { RestaurantList } from "../components/restaurant-list.styles";
 
 const LoadingList = styled(ActivityIndicator).attrs({
   size: 50,

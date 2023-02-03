@@ -16,6 +16,8 @@ import { RestaurantsContext } from "../../../services/restaurant/restaurants.con
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { RestaurantList } from "../components/restaurant-list.styles";
 
+import { FadeInView } from "../../../components/animations/fade.animation";
+
 const LoadingList = styled(ActivityIndicator).attrs({
   size: 50,
   animating: true,
@@ -48,24 +50,26 @@ export const RestaurantsScreen = ({ navigation }) => {
             onNavigate={navigation.navigate}
           />
         )}
-        <RestaurantList
-          data={restaurants}
-          renderItem={({ item }) => {
-            return (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("RestaurantDetail", {
-                    restaurant: item,
-                  })
-                }
-              >
-                <RestaurantInfoCard restaurant={item} />
-              </TouchableOpacity>
-            );
-          }}
-          keyExtractor={(item) => item.name}
-          contentContainerStyle={{ padding: 16, marginTop: 16 }}
-        />
+        <FadeInView>
+          <RestaurantList
+            data={restaurants}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("RestaurantDetail", {
+                      restaurant: item,
+                    })
+                  }
+                >
+                  <RestaurantInfoCard restaurant={item} />
+                </TouchableOpacity>
+              );
+            }}
+            keyExtractor={(item) => item.name}
+            contentContainerStyle={{ padding: 16, marginTop: 16 }}
+          />
+        </FadeInView>
       </SafeArea>
     </SafeAreaProvider>
   );

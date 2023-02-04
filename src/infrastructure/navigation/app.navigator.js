@@ -9,6 +9,7 @@ import { FavouritesContextProvider } from "../../services/favourites/favourites.
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { colors} from "../theme/colors";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { SettingsNavigator } from "./settings.navigator";
@@ -31,8 +32,8 @@ const NavIcons = ({ route }) => ({
     // You can return any component that you like here!
     return <Ionicons name={iconName} size={size} color={color} />;
   },
-  tabBarActiveTintColor: "tomato",
-  tabBarInactiveTintColor: "gray",
+  tabBarActiveTintColor: colors.brand.primary,
+  tabBarInactiveTintColor: colors.brand.muted,
 });
 
 //Allows for more Complex Navigation

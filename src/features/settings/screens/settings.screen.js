@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { TouchableOpacity } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { List, Avatar } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -9,7 +10,8 @@ import styled from "styled-components/native";
 
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { TouchableOpacity } from "react-native";
+import { colors} from "../../../infrastructure/theme/colors";
+
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -36,7 +38,7 @@ export const SettingsScreen = ({ navigation }) => {
       <AvatarContainer>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!photo && (
-            <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+            <Avatar.Icon size={180} icon="human" backgroundColor={colors.brand.primary}/>
           )}
           {photo && (
             <Avatar.Image

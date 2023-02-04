@@ -9,7 +9,7 @@ import { FavouritesContextProvider } from "../../services/favourites/favourites.
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { colors} from "../theme/colors";
+import { colors } from "../theme/colors";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { SettingsNavigator } from "./settings.navigator";

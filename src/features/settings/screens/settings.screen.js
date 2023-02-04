@@ -8,7 +8,7 @@ import styled from "styled-components/native";
 
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-
+import { TouchableOpacity } from "react-native";
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -22,7 +22,9 @@ export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <AvatarContainer>
-        <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+          <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+        </TouchableOpacity>
         <Spacer position="top" size="large">
           <Text variant="label">{user.email}</Text>
         </Spacer>

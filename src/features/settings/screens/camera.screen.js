@@ -6,9 +6,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, TouchableOpacity } from "react-native";
 import { Text } from "../../../components/typography/text.component";
 
-
-
-//import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { AuthContext } from "../../../services/auth/auth.context";
 
 const ProfileCamera = styled(Camera)`
@@ -31,7 +28,7 @@ export const CameraScreen = ({ navigation }) => {
   const snap = async () => {
     if (cameraRef) {
       const photo = await cameraRef.current.takePictureAsync();
-      AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
+      await AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
       navigation.goBack();
     }
   };
